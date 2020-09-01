@@ -1,0 +1,29 @@
+<%- include("partials/header") %>
+<h1>Compose</h1>
+<form class="comp" action="/compose" method="post">
+  <div class="form-group">
+
+
+<label>Title</label>
+<input type="text" class="form-control"name="posttitle" autocomplete="off" required>
+
+<label>Date</label>
+<input type="text" class="form-control"name="postdate" autocomplete="off"required>
+
+<label>Class</label>
+<input type="text" class="form-control"name="classname" autocomplete="off"required>
+
+<label>Post</label>
+<textarea name="postbody" rows="5" class="form-control"cols="30"required></textarea>
+
+<br>
+  <button type="submit"class="btn btn-primary" name="pub">Compose</button>
+</div>
+</form>
+<style>
+  .comp{
+    padding-left: 400px;
+    padding-right: 400px;
+  }
+</style>
+<%- include("partials/footer") %>

@@ -1,0 +1,19 @@
+<%- include("partials/header") %>
+
+<h1>Important News Regarding Counselling</h1>
+<div class="hoho">
+  <% contents.forEach(function(content){ %>
+    <h1><%=content.title%></h1>
+  <p>  <%=content.content;%></p>
+  <%});%>
+
+</div>
+
+
+<%- include("partials/footer") %>
+<style>
+  .hoho{
+    max-width: 700px;
+    margin: auto;
+  }
+</style>

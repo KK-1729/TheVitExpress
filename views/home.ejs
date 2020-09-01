@@ -1,0 +1,64 @@
+<%- include("partials/header") -%>
+<% var c=0;%>
+<% var t=0;%>
+
+
+
+	<table class="table1">
+	<%posts.forEach(function(post){%>
+<%t=t+1;%>
+<%c=c+1;%>
+
+			<td>
+
+        <%if(t===3 ){%>
+          <div class= "container rumour2">
+            <%if(c<=3){%>
+<h3>You Definitely Don't Wanna Believe This</h1>
+<%}%>
+      <h4><%=post.title%></h3>
+
+
+      <p><%= post.content.substring(0,200)+" ..." %>
+        <a href="/posts/<%= post._id %>">Read More</a>
+
+        </div>
+          </table>
+
+
+          <table class="table1">
+
+        <%t=0;}else if(t===1){%>
+          <div class= "container rumour1">
+            <%if(c<=3){%>
+<h3>You Definitely Don't Wanna Believe This</h1>
+  <%}%>
+      <h4><%=post.title%></h3>
+
+
+      <p><%= post.content.substring(0,200)+" ..." %>
+        <a href="/posts/<%= post._id %>">Read More</a>
+
+        </div>
+        <%}else{%>
+				<div class="container headline">
+          <%if(c<=3){%>
+<h3>Trending In VIT</h1>
+  <%}%>
+	  <h4><%=post.title%></h3>
+
+
+	  <p><%= post.content.substring(0,150)+" ..." %>
+	    <a href="/posts/<%= post._id %>">Read More</a>
+
+			</div>
+
+
+<%}%>
+</td>
+
+	<%});%>
+
+
+
+<%- include("partials/footer") -%>
