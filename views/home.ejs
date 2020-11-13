@@ -5,15 +5,13 @@
 
 
 	<table class="table1">
-	<%posts.forEach(function(post){%>
-<%t=t+1;%>
-<%c=c+1;%>
-
+	  <% posts.forEach(function(post) { %>
+      <%t=t+1;%>
+      <%c=c+1;%>
 			<td>
-
-        <%if(t===3 ){%>
+        <% if(t == 3 ) { %>
           <div class= "container rumour2">
-            <%if(c<=3){%>
+            <% if(c <= 3) { %>
 <h3>You Definitely Don't Wanna Believe This</h1>
 <%}%>
       <h4><%=post.title%></h3>

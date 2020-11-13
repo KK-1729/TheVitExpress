@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({
   useUnifiedTopology: true
 }));
 app.use(express.static(__dirname + "/public"));
-mongoose.connect("mongodb://localhost:27017/newsdb", {
+mongoose.connect("mongodb+srv://KK:Karthik123@thevitexpress.cp5yf.mongodb.net/thevitexpress?retryWrites=true&w=majority", {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
