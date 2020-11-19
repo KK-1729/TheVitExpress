@@ -1,11 +1,8 @@
-
 .background{
 	background: rgb(2,0,36);
-background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(31,159,76,0.9699230033810399) 50%, rgba(2,47,56,1) 87%);
+	background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(31,159,76,0.9699230033810399) 50%, rgba(2,47,56,1) 87%);
 	color: white;
 }
-
-
 h1 {
 	font-family: 'Caveat',fantasy;
 	font-weight: bold;
@@ -14,7 +11,6 @@ h1 {
 	/*transform: scale(2);*/
 	/* padding-left: 40%; */
 	text-align:center;
-
 	padding-top: 2%;
 	margin-bottom: 0
 }
@@ -27,30 +23,29 @@ a{
 	color: yellow;
 }
 p{
-
 	font-size: 20px;
 }
 .jumbotron{
-
 	padding-bottom:2%;
 	background: rgb(2,0,36);
-background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(31,159,76,0.9699230033810399) 50%, rgba(2,47,56,1) 87%);
+	background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(31,159,76,0.9699230033810399) 50%, rgba(2,47,56,1) 87%);
 }
 div.container {
     width:98%;
     margin:1%;
-  }
-  table.table1 {
+}
+table.table1 {
     text-align:center;
     margin-left:auto;
     margin-right:auto;
-
-  }
-  tr,td {text-align:left;}
+}
+tr,td {
+	text-align:left;
+}
 .headline{
 	float: left;
 	padding-top: 0.25;
-text-align: center;
+	text-align: center;
 	margin-left: auto;
 	margin-right: auto;
 	border-left: 2px solid black;
@@ -63,38 +58,29 @@ a.nav-link:hover{
 	border-radius: 5px;
 }
 .rumour1{
-text-align: center;
-padding-top: auto;
+	text-align: center;
+	padding-top: auto;
 	margin-right: auto;
 	margin-left: auto;
-
 }
 .rumour2{
-text-align: center;
-padding-top: auto;
+	text-align: center;
+	padding-top: auto;
 	margin-right: auto;
 	margin-left: auto;
-
 }
-
 .register{
 	margin-top: 0;
 	padding-bottom: 1px;
-
-
 }
-.scroll{
-margin-right: 5px;
-margin-left: 5px;
+.scroll {
+	margin-right: 5px;
+	margin-left: 5px;
 	margin-top: 5%;
 	margin-bottom: 0
 }
-
 .navbar {
-
-
-  position: fixed;
-  top: 0.25px;
-  width: 100%;
-
+  	position: fixed;
+  	top: 0.25px;
+ 	width: 100%;
 }

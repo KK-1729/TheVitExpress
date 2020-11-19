@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 const _ = require("lodash");
 const searchtext = "";
 const request=require("request");
+const nodemailer = require("nodemailer");
 
 
 app.use(bodyParser.urlencoded({
@@ -164,7 +165,103 @@ app.get("/success", function(req, res) {
   res.render("success");
 });
 
+app.get("/newsletter", function(req, res) {
+  res.render("newsletter");
+});
 
+app.post("/send", function(req, res) {
+  newsletter_template = `
+  <!DOCTYPE html>
+  <html>
+  <head>
+    <title></title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <style type="text/css">
+      .whole {
+        background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(31,159,76,0.9699230033810399) 50%, rgba(2,47,56,1) 87%);
+        color: white;
+        padding: 7%;
+      }
+      h1 {
+        text-align: center;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 600;
+        margin-top: 50px;
+        margin-bottom: 50px;
+      }
+      .card {
+        background: rgb(0, 128, 102);
+        padding: 4%;
+        margin-bottom: 20px;
+      }
+      .card-title {
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="whole">
+      <h1>THE VIT EXPRESS</h1>
+      <div class="container">
+        <div class="card">
+          <h3 class="card-title">You definitely don't wanna believe this!</h3>
+          <p class="card-text">
+            ${req.body.rumour}
+          </p>
+        </div>
+        <div class="card">
+          <h3 class="card-title">Trending in VIT</h3>
+          <p class="card-text">
+            ${req.body.headlines}
+          </p>	
+        </div>
+      </div>
+    </div>
+  </body>
+  </html>
+  `;
+  // create reusable transporter object using the default SMTP transport
+  let transporter = nodemailer.createTransport({
+    // host: "mail.google.com",
+    // port: 587,
+    // secure: false, // true for 465, false for other ports
+    service: "Gmail",
+    auth: {
+      user: "thevitexpress308@gmail.com", // generated ethereal user
+      pass: "vitnews123", // generated ethereal password
+    },
+    tls: {
+      rejectUnauthorized: false
+    }
+  });
+
+  // setup email data with defined transport object
+  let mailOptions = {
+    from: '"THE VIT EXPRESS" <thevitexpress308@gmail.com>', // sender address
+    to: "kkarthikmadduri1729@gmail.com", // list of receivers
+    subject: "THE VIT EXPRESS NEWSLETTER", // Subject line
+    // text: "Hello world?", // plain text body
+    html: newsletter_template, // html body
+  };
+
+  // send mail with defined transport object
+  transporter.sendMail(mailOptions, (error, info) => {
+    if(error) {
+      return console.log(error);
+    }
+    console.log("Message sent: %s", info.messageId);
+    // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
+
+    // Preview only available when sending through an Ethereal account
+    console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+    // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
+  });
+
+  
+  res.render("success");
+});
 
 
 app.listen(3000, function() {
