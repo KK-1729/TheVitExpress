@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({
   useUnifiedTopology: true
 }));
 app.use(express.static(__dirname + "/public"));
-mongoose.connect("mongodb+srv://KK:Karthik123@thevitexpress.cp5yf.mongodb.net/thevitexpress?retryWrites=true&w=majority", {
+mongoose.connect("mongodb://localhost:27017/newsdb", {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
@@ -45,20 +45,6 @@ app.get("/", function(req, res) {
   });
 });
 
-
-app.get("/counselling", function(req, res) {
-  News.find({
-    class: "counselling"
-  }, function(err, found) {
-    if (!err) {
-      res.render("counselling", {
-        contents: found
-      })
-    } else {
-      console.log(err);
-    }
-  });
-});
 
 
 app.get("/subscribe", function(req, res) {
@@ -123,13 +109,11 @@ app.get("/about", function(req, res) {
 app.post("/compose", function(req, res) {
 
   const titlename = _.capitalize(req.body.posttitle);
-  const datetoday = req.body.postdate;
   const classname = req.body.classname;
   const contentname = req.body.postbody;
 
   const news = new News({
     title: titlename,
-    date: datetoday,
     class: classname,
     content: contentname
   });
