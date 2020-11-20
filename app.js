@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({
   useUnifiedTopology: true
 }));
 app.use(express.static(__dirname + "/public"));
-mongoose.connect("mongodb://localhost:27017/newsdb", {
+mongoose.connect("mongodb+srv://KK:Karthik123@thevitexpress.cp5yf.mongodb.net/thevitexpress?retryWrites=true&w=majority", {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
@@ -28,6 +28,12 @@ const newsschema = {
   content: String
 };
 
+var emailSchema = new mongoose.Schema({
+  email: String
+});
+
+var Email = mongoose.model("Email", emailSchema);
+
 const News = mongoose.model("News", newsschema);
 
 
@@ -36,7 +42,6 @@ app.get("/", function(req, res) {
   var count1 = 0;
   News.find({}, function(err, found) {
     if (!err) {
-
       res.render("home", {
         posts: found,
       })
@@ -47,46 +52,58 @@ app.get("/", function(req, res) {
 });
 
 
-
+var newData = {};
 app.get("/subscribe", function(req, res) {
   res.render("subscribe");
 });
 app.post("/subscribe", function(req, res) {
-  var firstname = req.body.fname;
-  var lastname = req.body.lname;
-  var email = req.body.email;
-
-  var data = {
-    members: [{
-      email_address: email,
-      status: "subscribed",
-      merge_fields: {
-        FNAME: firstname,
-        LNAME: lastname
-      }
-    }]
-  };
-  var jsondata = JSON.stringify(data);
-  //console.log(firstname,lastname,email);
-
-  var options = {
-    url: "https://us17.api.mailchimp.com/3.0/lists/1e2cd46765",
-    method: "POST",
-    headers: {
-      "Authorization": "yash1 b1956c0b0c7e82ce98c9469b1e16fc71-us17"
-    },
-    body: jsondata
-  };
-  request(options, function(error, response, body) {
-    if (error) {
-      console.log(error);
+  var email_id = req.body.email;
+  newData = {email: email_id};
+  Email.create(newData, function(err, newlyAdded) {
+    if(err) {
+      console.log(err);
     } else {
-      if (response.statusCode === 200) {
-        res.render("success");
-      }
+      console.log(newData);
+      res.redirect("/success");
     }
   });
 });
+// app.post("/subscribe", function(req, res) {
+//   var firstname = req.body.fname;
+//   var lastname = req.body.lname;
+//   var email = req.body.email;
+
+//   var data = {
+//     members: [{
+//       email_address: email,
+//       status: "subscribed",
+//       merge_fields: {
+//         FNAME: firstname,
+//         LNAME: lastname
+//       }
+//     }]
+//   };
+//   var jsondata = JSON.stringify(data);
+//   //console.log(firstname,lastname,email);
+
+//   var options = {
+//     url: "https://us17.api.mailchimp.com/3.0/lists/1e2cd46765",
+//     method: "POST",
+//     headers: {
+//       "Authorization": "yash1 b1956c0b0c7e82ce98c9469b1e16fc71-us17"
+//     },
+//     body: jsondata
+//   };
+//   request(options, function(error, response, body) {
+//     if (error) {
+//       console.log(error);
+//     } else {
+//       if (response.statusCode === 200) {
+//         res.render("success");
+//       }
+//     }
+//   });
+// });
 
 
 
@@ -96,10 +113,7 @@ app.post("/subscribe", function(req, res) {
 
 app.get("/compose", function(req, res) {
   News.find({}, function(err, foundBlog) {
-
     res.render("compose");
-
-
   });
 });
 app.get("/about", function(req, res) {
@@ -108,11 +122,9 @@ app.get("/about", function(req, res) {
 
 
 app.post("/compose", function(req, res) {
-
   const titlename = _.capitalize(req.body.posttitle);
   const classname = req.body.classname;
   const contentname = req.body.postbody;
-
   const news = new News({
     title: titlename,
     class: classname,
@@ -152,7 +164,7 @@ app.get("/success", function(req, res) {
 app.get("/newsletter", function(req, res) {
   res.render("newsletter");
 });
-
+  
 app.post("/send", function(req, res) {
   newsletter_template = `
   <!DOCTYPE html>
@@ -183,6 +195,9 @@ app.post("/send", function(req, res) {
       .card-title {
         color: white;
       }
+      .carf-text {
+        color: white;
+      }
     </style>
   </head>
   <body>
@@ -206,6 +221,8 @@ app.post("/send", function(req, res) {
   </body>
   </html>
   `;
+
+
   // create reusable transporter object using the default SMTP transport
   let transporter = nodemailer.createTransport({
     // host: "mail.google.com",
@@ -220,11 +237,23 @@ app.post("/send", function(req, res) {
       rejectUnauthorized: false
     }
   });
-
+  var datas = [];
+  Email.find({}, function(err, data) {
+    if(err) {
+      console.log(err);
+    } else {
+      console.log(data[0].email);
+      for(i=0; i < data.length; i++) {
+          datas.push(data[i].email);
+      }
+      console.log(datas);
+    }
+  });
   // setup email data with defined transport object
   let mailOptions = {
     from: '"THE VIT EXPRESS" <thevitexpress308@gmail.com>', // sender address
-    to: "kkarthikmadduri1729@gmail.com", // list of receivers
+    to: datas,
+     // list of receivers
     subject: "THE VIT EXPRESS NEWSLETTER", // Subject line
     // text: "Hello world?", // plain text body
     html: newsletter_template, // html body

@@ -1,0 +1,59 @@
+.background {
+	background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(31,159,76,0.9699230033810399) 50%, rgba(2,47,56,1) 87%);
+	color: white; 
+}
+body {
+	color: white;
+}
+h1 {
+	font-family: 'Caveat',fantasy;
+	font-weight: bold;
+	font-size: 70px;
+	text-align:center;
+	padding-top: 2%;
+	margin-bottom: 0
+}
+h3{
+	font-family: 'Caveat', cursive;
+	font-weight: bold;
+	font-size: 50px;
+	text-align: center;
+}
+a{
+	color: yellow;
+}
+.jumbotron{
+	padding-bottom:2%;
+	background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(31,159,76,0.9699230033810399) 50%, rgba(2,47,56,1) 87%);
+}
+a.nav-link:hover{
+	background-color: #111;
+	border-radius: 5px;
+}
+.scroll{
+    margin-right: 5px;
+    margin-left: 5px;
+	margin-top: 5%;
+	margin-bottom: 0
+}
+.navbar {
+    position: fixed;
+    top: 0.25px;
+    width: 100%;
+}
+.post {
+    width: 70%;
+    text-align: center;
+    margin-left: 15%;
+    padding: 4%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+.text {
+    margin-top: 3%;
+}
+.card {
+    background: rgb(0, 128, 102);
+}

@@ -1,17 +1,20 @@
 .background{
 	background: rgb(2,0,36);
-	background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(31,159,76,0.9699230033810399) 50%, rgba(2,47,56,1) 87%);
+background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(31,159,76,0.9699230033810399) 50%, rgba(2,47,56,1) 87%);
 	color: white;
 
 }
+
+
 h1 {
 	font-family: 'Caveat',fantasy;
 	font-weight: bold;
 	font-size: 70px;
-	/*width: 1000% ;*/
-	/*transform: scale(2);*/
+	/* width: 1000% ;
+	transform: scale(2); */
 	/* padding-left: 40%; */
 	text-align:center;
+
 	padding-top: 2%;
 	margin-bottom: 0
 }
@@ -25,20 +28,16 @@ a{
 	color: yellow;
 }
 p{
+
 	font-size: 20px;
 }
 .jumbotron{
+
 	padding-bottom:2%;
 	background: rgb(2,0,36);
-	background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(31,159,76,0.9699230033810399) 50%, rgba(2,47,56,1) 87%);
+background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(31,159,76,0.9699230033810399) 50%, rgba(2,47,56,1) 87%);
 }
 div.container {
-<<<<<<< HEAD
-    width:98%;
-    margin:1%;
-}
-table.table1 {
-=======
 
     width:40%;
     margin:3%;
@@ -47,17 +46,10 @@ table.table1 {
 		/* float: left; */
   margin: 0 1.5%;
   width: 55%;
->>>>>>> 8609e1cde8752775d3d457b1e981fba8b9e784ad
     text-align:center;
 		/* float: left; */
     margin-left:auto;
     margin-right:auto;
-<<<<<<< HEAD
-}
-tr,td {
-	text-align:left;
-}
-=======
 /* max-width: 48%; */
 /* border-right: 3px solid black; */
   }
@@ -73,13 +65,12 @@ tr,td {
 	}
   /* tr,td {text-align:left;} */
 
->>>>>>> 8609e1cde8752775d3d457b1e981fba8b9e784ad
 .headline{
 /* float: left; */
 
 
 	padding-top: 0.25;
-	text-align: center;
+text-align: center;
 	margin-left: auto;
 	margin-right: auto;
 	/* border-left: 2px solid black;
@@ -91,43 +82,35 @@ a.nav-link:hover{
 	background-color: #111;
 	border-radius: 5px;
 }
-<<<<<<< HEAD
-.rumour1{
-	text-align: center;
-	padding-top: auto;
-=======
 .rumour{
 	/* float:right; */
 /* display: inline; */
 text-align: center;
 padding-top: 0.25;
->>>>>>> 8609e1cde8752775d3d457b1e981fba8b9e784ad
 	margin-right: auto;
 	margin-left: auto;
+
 }
-<<<<<<< HEAD
-.rumour2{
-	text-align: center;
-	padding-top: auto;
-	margin-right: auto;
-	margin-left: auto;
-}
-=======
 
 
->>>>>>> 8609e1cde8752775d3d457b1e981fba8b9e784ad
 .register{
 	margin-top: 0;
 	padding-bottom: 1px;
+
+
 }
-.scroll {
-	margin-right: 5px;
-	margin-left: 5px;
+.scroll{
+margin-right: 5px;
+margin-left: 5px;
 	margin-top: 5%;
 	margin-bottom: 0
 }
+
 .navbar {
-  	position: fixed;
-  	top: 0.25px;
- 	width: 100%;
+
+
+  position: fixed;
+  top: 0.25px;
+  width: 100%;
+
 }

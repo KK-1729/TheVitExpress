@@ -1,42 +1,75 @@
-<%- include("partials/header") -%>
-<% var h=0;%>
-<% var r=0;%>
+<html>
 
-<% posts.forEach(function(post) { %>
-<%if(post.class=="headline"){%>
-          <table class="table1">
-	<%h=h+1;%>
-				<div class="container headline">
-					<%if(h==1){%><tr>
-<h3>Trending In VIT</h1><br>
-  <%}%></tr><td>
-	<h4><%=post.title%></h3>
-<p><%= post.content.substring(0,100) %>
-<%if(post.length>=100){%>
+<head class="background">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Vit Journal</title>
+  <base href="/">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="css/home.css">
+  <script src="https://apps.elfsight.com/p/platform.js" defer></script>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
 
-		<a href="/posts/<%= post._id %>">"..."+Read More</a><%}%></td>
+<body class="background">
+  <div class="jumbotron background">
+    <h1 style="font-family:newspaper">THE VIT EXPRESS</h1>
+    <marquee class="scroll ">
+      <p class="title marke" style="font-size:30px">The One Stop For All VIT News</p>
+    </marquee>
+  </div>
 
-			</div>
+  <nav class="navbar navbar-expand-lg background">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/" style="color:white">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/subscribe" style="color:white">Subscribe</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://www.vit.ac.in" style="color:white">VIT Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about" style="color:white">About Us</a></li>
+      </ul>
+    </div>
+  </nav>
 
-</table>
-<%}%>
-		<% if (post.class == "rumour" ) { %>
-<table class="table2">
+  <div class="row">
+    <div class="rumour col-lg-4">
+      <h3>You definitely don't wanna believe this!</h3>
+      <% posts.forEach(function(post) { %>
+        <% if(post.class == "rumour") { %>
+          <div class = "left card">
+            <h5><%=post.title%></h5>
+              <p class=""><%= post.content.substring(0,100) %></p>
+              <% if(post.content.length >= 100) { %>
+                <a href="/posts/<%= post._id %>">... Read More</a>
+              <% } %>
+          </div>
+        <% } %>
+      <% }) %>
+    </div>
+    
+    <div class="headlines col-lg-8">
+      <h3 class="trending">Trending in VIT</h3>
+      <% posts.forEach(function(post) { %>
+        <% if(post.class == "headline") { %>
+          <div class="right card">
+            <h5><%=post.title%></h5>
+            <p><%= post.content.substring(0,100) %></p>
+            <% if(post.content.length>=100) { %>
+              <a href="/posts/<%= post._id %>">... Read More</a>
+            <% } %>
+          </div>
+        <% } %>
+      <% }) %>
+    </div>
+  </div>
+</body>
 
-				<%r=r+1;%>
-				<div class= "container rumour">
-					<% if(r==1) { %>
-						<tr>
-<h3>You Definitely Don't Wanna Believe This</h1><br>
-<%}%></tr><td>
-		<h4><%=post.title%></h3>
-	<p><%= post.content.substring(0,100) %></p>
-<%if(post.length>=100){%>
-
-			<a href="/posts/<%= post._id %>">"..."+Read More</a><%}%></td>
-
-
-			</div>
-				</table><%}%>
-				<%});%>
-<%- include("partials/footer") -%>
+</html>

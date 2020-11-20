@@ -1,18 +1,54 @@
-<%- include("partials/header") -%>
+<html>
 
-<div class="post">
+<head class="background">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Vit Journal</title>
+  <base href="/">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="css/post.css">
+  <script src="https://apps.elfsight.com/p/platform.js" defer></script>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
 
+<body class="background">
+  <div class="jumbotron background">
+    <h1 style="font-family:newspaper">THE VIT EXPRESS</h1>
+    <marquee class="scroll ">
+      <p class="title marke" style="font-size:30px">The One Stop For All VIT News</p>
+    </marquee>
+  </div>
 
-<h1><%=content.title%></h1>
+  <nav class="navbar navbar-expand-lg background">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/" style="color:white">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/subscribe" style="color:white">Subscribe</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://www.vit.ac.in" style="color:white">VIT Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about" style="color:white">About Us</a></li>
+      </ul>
+    </div>
+  </nav>
 
-<p><%=content.content%></p>
+  <div class="post card">
+    <h1><%=content.title%></h1>
+    <p class="text"><%=content.content%></p>
+  </div>
 
-</div>
-
-<%- include("partials/footer") -%>
+</body>
+</html>
 <style>
-.post{
+/* .post{
   max-width: 700px;
   margin: auto;
-}
+} */
 </style>
